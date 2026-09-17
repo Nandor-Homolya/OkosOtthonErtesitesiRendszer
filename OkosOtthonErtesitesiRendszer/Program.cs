@@ -22,6 +22,7 @@ namespace OkosOtthonErtesitesiRendszer
             foreach (var csatorna in csatornak)
             {
                 csatorna.Kuld(ertesites);
+                DatabaseHelper.MentesAdatbazisba(csatorna.GetType().Name, ertesites);
             }
 
             Console.ReadKey();
