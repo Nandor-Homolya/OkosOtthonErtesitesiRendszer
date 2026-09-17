@@ -17,8 +17,8 @@ namespace OkosOtthonErtesitesiRendszer
 
         public override void Kuld(Notification notification)
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"[Push] Eszkoz: {DeviceID} | Uzenet: {notification.Message} | Ido: {notification.Timestamp}");
         }
     }
 }
-}
+

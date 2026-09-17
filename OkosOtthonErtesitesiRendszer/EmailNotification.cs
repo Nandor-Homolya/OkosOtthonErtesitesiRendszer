@@ -19,7 +19,7 @@ namespace OkosOtthonErtesitesiRendszer
 
         public override void Kuld(Notification notification)
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"[Email] Cimzett: {EmailAddress} | Targy: {Subject} | Uzenet: {notification.Message} | Ido: {notification.Timestamp}");
         }
     }
 }

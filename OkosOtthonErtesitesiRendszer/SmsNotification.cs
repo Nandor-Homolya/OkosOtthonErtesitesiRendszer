@@ -17,7 +17,7 @@ namespace OkosOtthonErtesitesiRendszer
 
         public override void Kuld(Notification notification)
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"[SMS] Telefonszam: {PhoneNumber} | Uzenet: {notification.Message} | Ido: {notification.Timestamp}");
         }
     }
 }
