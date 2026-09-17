@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 
 namespace OkosOtthonErtesitesiRendszer
 {
@@ -42,6 +39,23 @@ namespace OkosOtthonErtesitesiRendszer
                     cmd.Parameters.AddWithValue("@u", n.Message);
                     cmd.Parameters.AddWithValue("@i", n.Timestamp.ToString("yyyy-MM-dd HH:mm:ss"));
                     cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public static void OsszesLekerdezese()
+        {
+            using (var conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+                string sql = "SELECT Id, Csatorna, Uzenet, Idopont FROM Ertesitesek ORDER BY Id";
+                using (var cmd = new SQLiteCommand(sql, conn))
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Console.WriteLine($"#{reader["Id"]} | {reader["Csatorna"]} | {reader["Uzenet"]} | {reader["Idopont"]}");
+                    }
                 }
             }
         }
